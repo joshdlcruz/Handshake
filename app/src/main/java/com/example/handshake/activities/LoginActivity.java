@@ -1,12 +1,12 @@
 package com.example.handshake.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.handshake.R;
 import com.example.handshake.model.Driver;
@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
+
     // Login fields
     EditText mName;
     EditText mPassword;
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         mName = (EditText) findViewById(R.id.text_view_name);
         mPassword = (EditText) findViewById(R.id.text_view_password);
 
@@ -127,4 +129,3 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 }
-

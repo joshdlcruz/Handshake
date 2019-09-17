@@ -1,11 +1,5 @@
 package com.example.handshake.activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -13,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -23,10 +16,17 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+
 import com.example.handshake.R;
 import com.example.handshake.services.DriverService;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -98,11 +98,11 @@ public class DriverActivity extends AppCompatActivity implements OnMapReadyCallb
 
 
     /******* ACTIVITY LIFECYCLE *******/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver);
+
         // onCreate()
         Log.d(DEBUG_ACTIVITY_LC,"onCreate()");
 
@@ -583,7 +583,7 @@ public class DriverActivity extends AppCompatActivity implements OnMapReadyCallb
             // TODO: Consider calling ActivityCompat#requestPermissions here to request the missing permissions
             return;
         }
-        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationRequest, (com.google.android.gms.location.LocationListener) this);
+        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationRequest, this);
         LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
     }
 
@@ -613,21 +613,6 @@ public class DriverActivity extends AppCompatActivity implements OnMapReadyCallb
             Log.d(DEBUG_SIGN_IN, "9b. Disconnect from the Api ");
             mGoogleApiClient.disconnect();
         }
-
-    }
-
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String s) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
 
     }
 

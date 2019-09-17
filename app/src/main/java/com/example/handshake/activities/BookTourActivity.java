@@ -1,8 +1,5 @@
 package com.example.handshake.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -14,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.handshake.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -35,12 +35,12 @@ public class BookTourActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_tour);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         assert toolbar != null;
         toolbar.setTitle("Book a Tour");
 
-        FloatingActionButton fab = findViewById(R.id.fab_request_dispatch);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_request_dispatch);
         assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,12 +49,12 @@ public class BookTourActivity extends AppCompatActivity {
             }
         });
 
-        mName = findViewById(R.id.editText_name);
-        mNumber = findViewById(R.id.editText_number);
-        mLocation = findViewById(R.id.editText_location);
-        mRequests = findViewById(R.id.editText_additional);
-        mDate = findViewById(R.id.textView_date);
-        mTime = findViewById(R.id.textView_time);
+        mName = (EditText) findViewById(R.id.editText_name);
+        mNumber = (EditText) findViewById(R.id.editText_number);
+        mLocation = (EditText) findViewById(R.id.editText_location);
+        mRequests = (EditText) findViewById(R.id.editText_additional);
+        mDate = (TextView) findViewById(R.id.textView_date);
+        mTime = (TextView) findViewById(R.id.textView_time);
 
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
@@ -64,7 +64,7 @@ public class BookTourActivity extends AppCompatActivity {
                 String stringAmPm;
 
                 if (minute <= 9) {
-                    stringMinute = "0" + minute;
+                    stringMinute = "0" + Integer.toString(minute);
                 } else {
                     stringMinute = Integer.toString(minute);
                 }

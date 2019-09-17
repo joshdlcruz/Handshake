@@ -1,17 +1,8 @@
 package com.example.handshake.activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -27,6 +18,15 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.handshake.R;
 import com.example.handshake.model.DriverLocation;
@@ -58,7 +58,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
 
-public class UserActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+public class UserActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener,
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -114,11 +115,11 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
     private Runnable mRunnableWaitForResponse;
 
     //******* ACTIVITY LIFECYCLE *******//
-    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
         // 1. onCreate()
         Log.d(DEBUG_ACTIVITY_LC, "1. onCreate()");
 
@@ -404,11 +405,11 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
 
         if (mActionBarButtonState) {
             if (id == R.id.nav_book) {
-                startActivity(new Intent(UserActivity.this, BookTourActivity.class));
+                startActivity(new Intent(this, BookTourActivity.class));
             } else if (id == R.id.nav_info) {
-                startActivity(new Intent(UserActivity.this, TourInformationActivity.class));
+                startActivity(new Intent(this, TourInformationActivity.class));
             } else if (id == R.id.nav_help) {
-                startActivity(new Intent(UserActivity.this, HelpAndRatesActivity.class));
+                startActivity(new Intent(this, HelpAndRatesActivity.class));
             } else if (id == R.id.nav_call) {
                 Intent dialNumberIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "1234567890"));
                 startActivity(dialNumberIntent);
